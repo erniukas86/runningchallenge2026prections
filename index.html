@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PC Running Challenge 2026 — Predictions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#56702f;
+    --olive-deep:#475d28;
+    --sage:#b3c9a0;
+    --sage-2:#c3d6b1;
+    --rust:#a8472a;
+    --rust-deep:#8f3c23;
+    --track:#9a4226;
+    --orange:#e7632b;
+    --amber:#efa830;
+    --purple:#b18fc4;
+    --green:#6f8d44;
+    --cream:#f3ecd8;
+    --ink:#1d1d18;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--olive);
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 38px, rgba(255,255,255,.025) 38px 40px),
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,.05), transparent 40%);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:32px 18px 56px;
+  }
+
+  .poster{
+    width:100%;
+    max-width:780px;
+    background:var(--sage);
+    border:14px solid var(--olive-deep);
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+  }
+  /* diagonal speed lines like the poster */
+  .poster::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(115deg, transparent 49.6%, rgba(243,236,216,.55) 49.6% 50%, transparent 50%),
+      linear-gradient(115deg, transparent 70%, rgba(243,236,216,.4) 70% 70.3%, transparent 70.3%),
+      linear-gradient(115deg, transparent 22%, rgba(143,60,35,.18) 22% 22.25%, transparent 22.25%);
+    background-size:240px 240px;
+    pointer-events:none;
+    opacity:.6;
+  }
+
+  /* confetti */
+  .confetti{position:absolute;pointer-events:none;}
+  .c1{width:26px;height:13px;background:var(--green);top:42px;left:40px;transform:rotate(-18deg);border-radius:2px;}
+  .c2{width:22px;height:11px;background:var(--amber);top:70px;right:60px;transform:rotate(24deg);border-radius:2px;}
+  .c3{width:14px;height:14px;background:var(--rust);top:150px;left:30px;transform:rotate(12deg);}
+  .c4{width:18px;height:18px;border:4px solid var(--orange);border-radius:50%;top:120px;right:34px;}
+  .c5{width:20px;height:10px;background:var(--ink);top:200px;right:120px;transform:rotate(-30deg);border-radius:2px;}
+  .c6{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:16px solid var(--cream);top:250px;left:60px;transform:rotate(20deg);}
+
+  .inner{position:relative;z-index:2;padding:30px 34px 34px;}
+
+  /* logo */
+  .brand{display:flex;align-items:center;gap:11px;justify-content:center;margin-bottom:14px;}
+  .brand svg{width:42px;height:42px;flex:none;}
+  .brand .txt{line-height:1;text-align:left;}
+  .brand .txt .b1{font-weight:800;font-size:1.18rem;color:var(--orange);letter-spacing:.2px;}
+  .brand .txt .b2{font-weight:800;font-size:1.18rem;color:#3a4a3f;margin-top:1px;}
+
+  /* title */
+  .title{text-align:center;margin-top:6px;}
+  .title h1{
+    font-family:'Anton',sans-serif;
+    color:var(--rust);
+    font-size:clamp(2.5rem,9vw,4.4rem);
+    line-height:.86;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    text-shadow:3px 3px 0 rgba(143,60,35,.25);
+  }
+  .title .yr{
+    display:inline-block;
+    font-family:'Anton',sans-serif;
+    color:var(--ink);
+    font-size:clamp(1.6rem,5vw,2.3rem);
+    line-height:1;
+    margin-top:4px;
+    letter-spacing:2px;
+  }
+  .kicker{
+    display:inline-block;
+    margin:14px 0 4px;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Anton',sans-serif;
+    letter-spacing:3px;
+    font-size:clamp(1rem,3.4vw,1.5rem);
+    padding:7px 20px 6px;
+    border-radius:4px;
+    transform:rotate(-1.2deg);
+    text-transform:uppercase;
+  }
+  .subline{
+    text-align:center;
+    font-weight:700;
+    color:var(--rust-deep);
+    font-size:1.02rem;
+    margin:8px auto 0;
+    max-width:480px;
+  }
+  .daterange{
+    text-align:center;font-weight:800;color:var(--green);
+    letter-spacing:.5px;margin-top:2px;font-size:.95rem;
+  }
+
+  /* respondents count */
+  .respondents{
+    display:flex;align-items:center;justify-content:center;gap:12px;
+    margin:20px auto 6px;
+    background:var(--sage-2);
+    border:3px dashed var(--rust);
+    border-radius:50px;
+    padding:9px 22px;
+    width:max-content;max-width:100%;
+  }
+  .respondents .num{
+    font-family:'Anton',sans-serif;color:var(--rust);
+    font-size:1.9rem;line-height:1;
+  }
+  .respondents .lbl{font-weight:800;color:var(--rust-deep);font-size:.92rem;line-height:1.15;text-align:left;}
+
+  /* leaderboard */
+  .board{margin:14px 0 0;display:flex;flex-direction:column;gap:11px;}
+  .row{
+    display:flex;align-items:center;gap:14px;
+    background:var(--cream);
+    border-radius:14px;
+    padding:11px 16px 11px 12px;
+    box-shadow:0 4px 0 rgba(143,60,35,.18);
+    opacity:0;transform:translateY(14px);
+    animation:rise .55s cubic-bezier(.2,.8,.3,1) forwards;
+  }
+  .row.top{background:linear-gradient(110deg,#f7e9c4,#f3ecd8);box-shadow:0 5px 0 var(--amber),0 0 0 3px var(--amber) inset;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+
+  .rank{
+    font-family:'Anton',sans-serif;
+    width:34px;flex:none;text-align:center;
+    font-size:1.5rem;color:var(--rust-deep);opacity:.7;
+  }
+  .medal{font-size:1.6rem;width:34px;flex:none;text-align:center;}
+
+  .avatar{width:54px;height:54px;flex:none;border-radius:50%;overflow:hidden;border:3px solid var(--ink);background:var(--sage);}
+  .avatar svg{display:block;width:100%;height:100%;}
+
+  .person{flex:1;min-width:0;}
+  .person .name{font-weight:900;font-size:1.08rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .person .tag{font-weight:700;font-size:.78rem;color:var(--green);letter-spacing:.3px;}
+  .row.top .tag{color:var(--orange);}
+
+  .barwrap{flex:1.3;min-width:90px;}
+  .bartrack{height:14px;background:rgba(143,60,35,.14);border-radius:8px;overflow:hidden;}
+  .barfill{
+    height:100%;width:0;border-radius:8px;
+    background:linear-gradient(90deg,var(--orange),var(--amber));
+    animation:fill 1.1s cubic-bezier(.3,.9,.2,1) forwards;
+    animation-delay:inherit;
+  }
+  .row.top .barfill{background:linear-gradient(90deg,var(--rust),var(--orange));}
+  @keyframes fill{to{width:var(--w);}}
+
+  .pct{
+    font-family:'Anton',sans-serif;
+    font-size:1.55rem;color:var(--rust);
+    width:64px;flex:none;text-align:right;
+  }
+  .row.top .pct{color:var(--rust-deep);}
+
+  /* footer track band */
+  .track{
+    background:var(--track);
+    margin-top:24px;
+    padding:18px 34px 22px;
+    color:var(--cream);
+    position:relative;z-index:2;
+  }
+  .track .foot{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center;font-weight:700;font-size:.85rem;}
+  .track .foot b{color:#fff;}
+  .track .note{font-style:italic;opacity:.85;}
+
+  @media(max-width:560px){
+    .barwrap{display:none;}
+    .inner{padding:24px 18px 24px;}
+    .person .name{white-space:normal;}
+    .pct{width:54px;font-size:1.3rem;}
+  }
+</style>
+</head>
+<body>
+  <main class="poster">
+    <span class="confetti c1"></span>
+    <span class="confetti c2"></span>
+    <span class="confetti c3"></span>
+    <span class="confetti c4"></span>
+    <span class="confetti c5"></span>
+    <span class="confetti c6"></span>
+
+    <div class="inner">
+      <div class="brand">
+        <img src="PC logo - orange-gray.png" alt="Present Connection" style="height:54px;width:auto;">
+      </div>
+
+      <div class="title">
+        <h1>Running<br>Challenge</h1>
+        <div class="yr">2026</div>
+        <div><span class="kicker">★ Predictions ★</span></div>
+      </div>
+
+      <div class="respondents">
+        <span class="num" id="respCount">0</span>
+        <span class="lbl">employees placed<br>their predictions</span>
+      </div>
+
+      <section class="board" id="board" aria-label="Prediction leaderboard"></section>
+    </div>
+  </main>
+
+<script>
+  const RESPONDENTS = 17;
+
+  // win-probability shares from the team's predictions (sum = 100)
+  const runners = [
+    { name:"Martynas J.", pct:35, tag:"Crowd favourite",    bg:"#a8472a", skin:"#efa830", hair:"#1d1d18", style:"cap"      },
+    { name:"Ernestas B.", pct:23, tag:"Strong contender",   bg:"#6f8d44", skin:"#d98a5a", hair:"#3a2a1a", style:"headband" },
+    { name:"Edvinas V.",  pct:11, tag:"Dark horse",         bg:"#e7632b", skin:"#d98a5a", hair:"#1d1d18", style:"short"    },
+    { name:"Žydrūnas G.", pct:11, tag:"Dark horse",         bg:"#b18fc4", skin:"#efa830", hair:"#4a2f1a", style:"spiky"    },
+    { name:"Edgaras A.",  pct:5,  tag:"Wildcard",           bg:"#efa830", skin:"#d98a5a", hair:"#1d1d18", style:"beanie"   },
+    { name:"Simas V.",    pct:5,  tag:"Wildcard",           bg:"#56702f", skin:"#d4a574", hair:"#1d1d18", style:"buzz"     },
+    { name:"Justas P.",   pct:5,  tag:"Wildcard",           bg:"#9a4226", skin:"#efa830", hair:"#3a2a1a", style:"bald"     },
+  ];
+
+  const medals = ["🥇","🥈","🥉"];
+
+  // builds a flat, poster-style runner face avatar as SVG
+  function avatar(r){
+    const s = r.skin, h = r.hair, bg = r.bg, ink = "#1d1d18";
+    let hair = "";
+    if(r.style==="cap"){
+      hair = `<path d="M22 40 q28 -26 56 0 l0 4 q-28 -10 -56 0 z" fill="${ink}"/>
+              <rect x="20" y="42" width="60" height="6" rx="3" fill="${ink}"/>
+              <rect x="34" y="46" width="34" height="10" rx="5" fill="${ink}"/>`; // shades
+    } else if(r.style==="ponytail"){
+      hair = `<path d="M26 44 q24 -26 48 0 l0 8 q-24 -10 -48 0 z" fill="${h}"/>
+              <path d="M70 40 q22 6 16 40 q-10 4 -14 -10 q-2 -16 -10 -22 z" fill="${h}"/>`;
+    } else if(r.style==="headband"){
+      hair = `<path d="M27 46 q23 -22 46 0 l0 4 q-23 -10 -46 0 z" fill="${h}"/>
+              <rect x="25" y="44" width="50" height="7" rx="3" fill="#e7632b"/>`;
+    } else if(r.style==="bun"){
+      hair = `<circle cx="50" cy="22" r="9" fill="${h}"/>
+              <path d="M27 46 q23 -24 46 0 l0 6 q-23 -10 -46 0 z" fill="${h}"/>`;
+    } else if(r.style==="beanie"){
+      hair = `<path d="M24 44 q26 -24 52 0 l0 3 q-26 -10 -52 0 z" fill="#56702f"/>
+              <rect x="22" y="42" width="56" height="7" rx="3" fill="#475d28"/>`;
+    } else if(r.style==="short"){
+      hair = `<path d="M27 50 q23 -22 46 0 l0 6 q-23 -10 -46 0 z" fill="${h}"/>`;
+    } else if(r.style==="spiky"){
+      hair = `<path d="M28 50 q22 -18 44 0 l0 4 q-22 -8 -44 0 z" fill="${h}"/>
+              <polygon points="36,49 40,31 44,49" fill="${h}"/>
+              <polygon points="47,47 50,27 53,47" fill="${h}"/>
+              <polygon points="56,49 60,31 64,49" fill="${h}"/>`;
+    } else if(r.style==="buzz"){
+      hair = `<ellipse cx="50" cy="37" rx="22" ry="13" fill="${h}"/>
+              <path d="M28 50 q22 -8 44 0 l0 3 q-22 -5 -44 0 z" fill="${h}"/>`;
+    } else { // bald + beard
+      hair = `<path d="M30 58 q20 18 40 0 q-2 14 -20 14 q-18 0 -20 -14z" fill="${h}"/>`;
+    }
+    const eyes = r.style==="cap"
+      ? "" // sunglasses cover eyes
+      : `<circle cx="42" cy="55" r="2.6" fill="${ink}"/><circle cx="58" cy="55" r="2.6" fill="${ink}"/>`;
+    return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="${bg}"/>
+      <rect x="22" y="84" width="56" height="22" rx="11" fill="${ink}"/>
+      <rect x="26" y="86" width="48" height="20" rx="10" fill="${r.bg==='#efa830'?'#6f8d44':'#efa830'}"/>
+      <ellipse cx="50" cy="56" rx="22" ry="24" fill="${s}"/>
+      <circle cx="27" cy="58" r="5" fill="${s}"/><circle cx="73" cy="58" r="5" fill="${s}"/>
+      ${eyes}
+      <path d="M43 65 q7 7 14 0" stroke="${ink}" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      ${hair}
+    </svg>`;
+  }
+
+  const board = document.getElementById("board");
+  runners.forEach((r,i)=>{
+    const top = i===0 ? " top" : "";
+    const left = i<3 ? `<div class="medal">${medals[i]}</div>` : `<div class="rank">${i+1}</div>`;
+    const el = document.createElement("div");
+    el.className = "row"+top;
+    el.style.animationDelay = (0.12*i)+"s";
+    el.innerHTML = `
+      ${left}
+      <div class="avatar">${avatar(r)}</div>
+      <div class="person">
+        <div class="name">${r.name}</div>
+      </div>
+      <div class="barwrap">
+        <div class="bartrack"><div class="barfill" style="--w:${r.pct}%;animation-delay:${0.12*i+0.2}s"></div></div>
+      </div>
+      <div class="pct">${r.pct}%</div>`;
+    board.appendChild(el);
+  });
+
+  // count-up for respondents
+  const target = RESPONDENTS, el = document.getElementById("respCount");
+  let n = 0;
+  const step = Math.max(1, Math.round(target/40));
+  const t = setInterval(()=>{
+    n += step;
+    if(n>=target){ n=target; clearInterval(t); }
+    el.textContent = n;
+  }, 28);
+</script>
+</body>
+</html>
